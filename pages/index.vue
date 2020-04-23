@@ -58,9 +58,14 @@ export default {
           this.hasError = true;
         }
       } catch(err) {
-        console.log(err);
-        this.error = "User does not exist.";
-        this.hasError = true;
+        if(err.response.status == 404) {
+          this.error = "User does not exist.";
+          this.hasError = true;
+        } else {
+          this.error = "Unknown error";
+          this.hasError = true;
+        }
+        
      }
     }
   }
