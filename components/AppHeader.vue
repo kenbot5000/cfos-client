@@ -1,20 +1,11 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-fixed navbar-dark bg-primary">
     <ul class="navbar-nav mr-auto">
-      <nuxt-link class="navbar-brand" to="/dashboard">CFOS</nuxt-link>
-      <li class="nav-item dropdown text-light">
-        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Hello, {{ username }}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+      <nuxt-link class="navbar-brand" to="/dashboard">CFOS</nuxt-link>  
     </ul>
-    
+    <li class="nav-item nav-link text-light">
+      Hello, {{ username }}
+    </li>
   </nav>
 </template>
 
@@ -71,5 +62,8 @@ export default {
 </script>
 
 <style>
-
+html, body {
+  height: 100vh;
+  margin: 0;
+}
 </style>

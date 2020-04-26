@@ -23,12 +23,13 @@ export default {
   ** Global CSS
   */
   css: [
-    '@/assets/custombootstrap.scss'
+    '@/assets/custombootstrap.scss',
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '@/plugins/bootstrap-vue.js'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -43,8 +44,7 @@ export default {
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    'cookie-universal-nuxt',
-    'popperjs/core'
+    'cookie-universal-nuxt'
   ],
 
   boostrapVue: {
