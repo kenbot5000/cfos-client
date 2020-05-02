@@ -7,7 +7,7 @@
             </div>
             <div class="bottom-container bg-primary p-3">
                 <h3 class="h2 text-light">Users</h3>
-                <User v-for="user in firstUsers" v-on:edit-user="editUser" class="border-bottom border-light text-light" :key="user.id" :id="user.id" :username="user.username"/>
+                <User v-for="user in firstUsers" v-on:edit-user="editUser" class="border-bottom border-light text-light" :key="user.id" :userid="user.id" :username="user.username"/>
                 <div class="container-fluid text-right">
                     <nuxt-link to="/users"><button type="button" class="btn btn-outline-info mt-2">View All Users</button></nuxt-link>
                 </div>
