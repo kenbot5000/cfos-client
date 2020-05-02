@@ -50,9 +50,8 @@ export default {
 
             try {
                 let changesToSubmit = {username: this.selectedUser.username, password: this.selectedUser.password};
-                console.log(this.selectedUser.id);
-                console.log(changesToSubmit);
                 const res = await axios.put(`http://localhost:5000/user/${this.selectedUser.id}`, changesToSubmit, config);
+                this.$emit('reload-user');
             } catch(err) {
                 console.log(err);
                 this.errorMessage = "Unknown error.";
