@@ -39,6 +39,12 @@ export default {
             try {
                 const res = await axios.get(`http://localhost:5000/user/${id}`);
                 this.selectedUser = res.data.res;
+                let cookie = this.$cookies.get('active-user');
+                if(this.selectedUser.id == cookie.id) {
+                    this.errorMessage = "This is your own account. Make sure to remember the details";
+                } else {
+                    this.errorMessage = "";
+                }
             } catch(err) {
                 console.log(err);
             }

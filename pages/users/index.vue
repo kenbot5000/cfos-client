@@ -2,11 +2,13 @@
     <div class="container user-container mt-5 p-3 bg-primary">
         <div class="user-components">
             <UserEdit ref="userEdit" :class="[showUserEdit ? 'd-flex' : 'd-none']" @reload-user="reloadUser" @close-user-edit="closeUserEdit" :id="currentUser"/>
-            <h3 class="h1 text-light">Users</h3>
-            <User v-for="user in users" v-on:edit-user="editUser" class="border-bottom border-light text-light" :key="user.id" :userid="user.id" :username="user.username"/>  
+            <h1 class="h1 text-light">Users</h1>
+            <User v-for="(user, index) in users" @edit-user="editUser" @delete-user="users.splice(index, 1)" class="border-bottom border-light text-light" :key="user.id" :userid="user.id" :username="user.username"/>  
         </div>
         <div class="button-components">
             <button class="btn btn-info" @click="reloadUser()">Refresh</button>
+            <nuxt-link to="/users/add"><button class="btn btn-success">Add New User</button></nuxt-link>
+            <nuxt-link to="/dashboard"><button class="btn btn-danger">Go Back</button></nuxt-link>
         </div>
     </div>
 </template>
@@ -14,8 +16,8 @@
 <script>
 import Vue from "vue";
 import axios from "axios";
-import User from '../components/User';
-import UserEdit from '../components/UserEdit';
+import User from '../../components/User';
+import UserEdit from '../../components/UserEdit';
 
 export default {
     components: {
