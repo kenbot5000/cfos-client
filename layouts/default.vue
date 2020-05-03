@@ -19,4 +19,8 @@ export default {
   .container-fluid {
     padding: 0;
   }
+
+  body {
+    background-color: #F2F2F0 !important; 
+  }
 </style>

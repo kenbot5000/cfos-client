@@ -11,7 +11,6 @@
 
 <script>
 import axios from "axios";
-import 'jquery';
 
 export default {
   data() {
