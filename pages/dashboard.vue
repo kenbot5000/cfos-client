@@ -4,7 +4,7 @@
         <div class="left-container mr-3">
             <div class="top-container bg-primary mb-3 p-3">
                 <h3 class="h2 text-light">Today's Menu</h3>
-                <ActiveMenuItem class="border-bottom border-light text-light" v-for="item in activeMenu" :key="item.id" :itemName="item.name" :itemPrice="item.price"/>
+                <ActiveMenuItem class="border-bottom border-light text-light" v-for="item in activeMenu" :key="item.id" :itemName="item.name" :itemPrice="item.price.toFixed(2)"/>
                 <div class="container-fluid text-right">
                     <nuxt-link to="/menu"><button type="button" class="btn btn-outline-info">Manage Menu</button></nuxt-link>
                 </div>
