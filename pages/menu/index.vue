@@ -12,7 +12,7 @@
                             <th>Toggle</th>
                         </tr>
                     </thead>
-                    <MenuItem v-for="item in inactiveMenu" :key="item.id" :itemId="item.id" :itemName="item.name" :itemActive="item.active" :itemPrice="item.price"/>
+                    <MenuItem v-for="item in inactiveMenu" ref="inactiveList" @toggle-active="setActive" :key="item.id" :itemId="item.id" :itemName="item.name" :itemActive="item.active" :itemPrice="item.price"/>
                 </table>
             </div>
             <div class="right-container bg-info p-3">
@@ -53,17 +53,21 @@ export default {
         activeMenu() {
             return this.menu.filter(function(el) {
                 return el.active == true;
+            }).sort(function(a, b) {
+                return a.id - b.id
             });
         },
         inactiveMenu() {
             return this.menu.filter(function(el) {
                 return el.active == false;
+            }).sort(function(a, b) {
+                return a.id - b.id
             });
         }
     },
     async created() {
         try {
-            const menu = await axios.get("/api/menu");
+            const menu = await axios.get("/api/menu/");
             this.menu = menu.data.res;
         } catch(err) {
             console.log(err);
@@ -77,11 +81,28 @@ export default {
             
             itemSearch[0].active = false;
 
-            console.log(itemSearch);
-
-            // const res = axios.put(`/api/`)
+            try {
+                const res = axios.put(`/api/menu/${itemSearch[0].id}`, itemSearch[0]);
+            } catch(err) {
+                console.log(err);
+            }
 
             this.$refs.activeList.splice(id, 1);
+        },
+        async setActive(id) {
+            let itemSearch = this.inactiveMenu.filter(function(el) {
+                return el.id == id;
+            });
+
+            itemSearch[0].active = true;
+            
+            try {
+                const res = axios.put(`/api/menu/${itemSearch[0].id}`, itemSearch[0]);
+            } catch(err) {
+                console.log(err);
+            }
+            
+            this.$refs.inactiveList.splice(id, 1);
         }
     }
 }
