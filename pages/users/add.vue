@@ -34,8 +34,6 @@ export default {
     },
     methods: {
         async addUser() {
-            
-
             try {
                 const res = await axios.put("/api/user/", this.newUser);
                 this.$router.push("/users");
