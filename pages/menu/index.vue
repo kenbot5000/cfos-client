@@ -12,7 +12,7 @@
                             <th>Toggle</th>
                         </tr>
                     </thead>
-                    <MenuItem v-for="item in inactiveMenu" ref="inactiveList" @toggle-active="setActive" :key="item.id" :itemId="item.id" :itemName="item.name" :itemActive="item.active" :itemPrice="item.price"/>
+                    <MenuItem v-for="item in inactiveMenu" ref="inactiveList" @toggle-active="setActive" :key="item.id" :itemId="item.id" :itemName="item.name" :itemActive="item.active" :itemPrice="item.price.toFixed(2)"/>
                 </table>
             </div>
             <div class="right-container bg-info p-3">
@@ -26,12 +26,17 @@
                             <th>Toggle</th>
                         </tr>
                     </thead>
-                    <MenuItem v-for="item in activeMenu" ref="activeList" @toggle-active="setInactive" @delete-item="activeMenu.splice(item, 1)" :key="item.id" :itemId="item.id" :itemName="item.name" :itemActive="item.active" :itemPrice="item.price"/>
+                    <MenuItem v-for="item in activeMenu" ref="activeList" @toggle-active="setInactive" @delete-item="activeMenu.splice(item, 1)" :key="item.id" :itemId="item.id" :itemName="item.name" :itemActive="item.active" :itemPrice="item.price.toFixed(2)"/>
                 </table>
             </div>
         </div>
     <div class="toolbar bg-dark mt-4 p-4">
-        <button class="btn btn-success">Add New Menu Item</button>
+        <div class="toolbar-buttons">
+            <button class="btn btn-success mr-2" @click="routeTo(0)">Add New Menu Item</button>
+            <button class="btn btn-info mr-2">Refresh</button>
+            <button class="btn btn-warning mr-2" @click="routeTo(1)">Edit an Item</button> 
+        </div>
+            <button class="btn btn-danger" @click="routeTo(2)">Go Back</button>
     </div>
   </div>
 </template>
@@ -74,6 +79,10 @@ export default {
         }
     },
     methods: {
+        routeTo(num) {
+            let routes = ["/menu/add", "/menu/edit", "/dashboard"];
+            this.$router.push(routes[num]);
+        },
         async setInactive(id) {
             let itemSearch = this.activeMenu.filter(function(el) {
                 return el.id == id;
@@ -116,11 +125,22 @@ export default {
 
     .twin-container {
         min-height: 70vh;
+        max-height: 75vh;
         display: flex;
     }
 
     .toolbar {
         height: 10vh;
         display: flex;
+        justify-content: space-between;
+    }
+
+    .toolbar-buttons {
+        display: flex;
+        align-items: middle;
+    }
+
+    .twin-container > .left-container, .twin-container > .right-container {
+        overflow: auto;
     }
 </style>

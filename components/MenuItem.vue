@@ -6,7 +6,7 @@
     </div> -->
     <tr>
         <td class="align-middle">{{ itemId }}</td>
-        <td class="align-middle">{{ itemName }}</td>
+        <td class="align-middle name-cell">{{ itemName }}</td>
         <td class="align-middle">{{ itemPrice }}</td>
         <td><button class="btn btn-sm btn-primary" @click="$emit('toggle-active', itemId)">{{ buttonMessage }}</button></td>
     </tr>
@@ -37,4 +37,8 @@ export default {
     display: flex;
     justify-content: space-between;
 }
+
+.name-cell {
+    max-width: 15vw;
+}   
 </style>
