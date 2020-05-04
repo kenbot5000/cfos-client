@@ -19,6 +19,7 @@
         </div>
         <div class="right-container bg-info p-3">
             <h3 class="h2 text-primary">Orders</h3>
+                <OrderView class="border-bottom border-dark mt-3" v-for="order in ordersWithNames" :key="order.order_no" :orderno="order.order_no" :studentno="order.student_no" :studentname="order.name" />
         </div>
     </div>
 </template>
@@ -28,12 +29,14 @@ import axios from "axios";
 import User from '../components/User';
 import UserEdit from '../components/UserEdit';
 import ActiveMenuItem from '../components/ActiveMenuItem';
+import OrderView from '../components/OrderView';
 
 export default {
     components: {
         User,
         UserEdit,
-        ActiveMenuItem
+        ActiveMenuItem,
+        OrderView
     },
     data() {
         return {
@@ -42,7 +45,9 @@ export default {
             showUserEdit: false,
             currentUser: -1,
             // Active Menu Items
-            menu: []
+            menu: [],
+            orders: [],
+            ordersWithNames: []
         }
     },
     computed : {
@@ -53,8 +58,8 @@ export default {
             return this.menu.filter(function(el) {
                 return el.active == true;
             });
-        }
-    },
+        },
+    }, 
     async created() {
         // Users
         try {
@@ -72,6 +77,26 @@ export default {
         } catch(err) {
             console.log(err);
         }
+
+        // Orders
+        try {
+            const orders = await axios.get("/api/order/");
+            this.orders = orders.data.res;
+            console.log(this.orders);
+        } catch(err) {
+            console.log(err);
+        }
+
+        let bufferArray = [];
+        let orders = this.orders;
+
+        for(let i = 0; i < orders.length; i++) {
+            let getStudentName = await axios.get(`/api/student/${orders[i].student_no}`);
+            let studentName = getStudentName.data.res.lname + ", " + getStudentName.data.res.fname;
+            bufferArray.push({order_no: orders[i].order_no, student_no:orders[i].student_no ,name: studentName});
+        }
+
+        this.ordersWithNames = bufferArray;
     },
     methods: {
         editUser(id) {  
@@ -81,7 +106,7 @@ export default {
         },
         closeUserEdit() {
             this.showUserEdit = false;
-        }
+        },
     }
 }
 </script>

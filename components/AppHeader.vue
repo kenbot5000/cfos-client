@@ -6,6 +6,9 @@
     <li class="nav-item nav-link text-light">
       Hello, {{ username }}
     </li>
+    <li class="nav-item nav-link">
+      <button type="button" class="btn btn-danger btn-sm" @click="logOut">Log Out</button>
+    </li>
   </nav>
 </template>
 
@@ -33,7 +36,7 @@ export default {
     }
 
     try {
-      const res = await axios.get(`http://localhost:5000/user/${cookie.id}`, config);
+      const res = await axios.get(`/api/user/${cookie.id}`, config);
       this.username = res.data.res.username;
     } catch(err) {
       if(err.response) {
@@ -55,6 +58,12 @@ export default {
           content: "Cafeteria Food Ordering System school project"
         }
       ]
+    }
+  },
+  methods : {
+    logOut() {
+      this.$cookies.remove('active-user');
+      this.$router.push("/");
     }
   }
 }

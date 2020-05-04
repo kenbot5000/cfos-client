@@ -17,7 +17,7 @@
                 </div>
                 <div class="form-group">
                     <label>Your Orders:</label>
-                    <select multiple class="form-control" id="exampleFormControlSelect2" readonly disabled>
+                    <select multiple class="form-control" readonly disabled>
                         <option v-for="order in orders" :key=order.id>{{ order.name }}</option>
                     </select>
                 </div>

@@ -1,19 +1,29 @@
 <template>
-  <div class="user mb-2 py-2">
-    <span class="h5 mt-2">{{ student_no }} - Order No. {{ order_no }}</span>
-    <div class="button-section">
-        <button class="btn btn-secondary text-dark">View</button>
-        <button class="btn btn-warning" @click="deleteUser">Delete</button>
-    </div>
+  <div class="ordercon d-flex mb-2 py-2">
+    <span class="h5 mt-2">{{studentno}} - Order No. {{ orderno }}</span>
+    <button class="btn btn-secondary text-dark" @click="routeToId">View</button>
   </div>
 </template>
 
 <script>
 export default {
-    props: ["student_no", "order_no"]
+    props: ["studentno", "orderno", "studentname"],
+    data() {
+        return {
+            order_no: this.orderno
+        }
+    },
+    methods : {
+        routeToId() {
+            this.$router.push(`/orders/${this.order_no}`);
+        }
+    }
+
 }
 </script>
 
 <style>
-
+.ordercon {
+    justify-content: space-between;
+}
 </style>
