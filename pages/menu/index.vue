@@ -32,9 +32,9 @@
         </div>
     <div class="toolbar bg-dark mt-4 p-4">
         <div class="toolbar-buttons">
-            <button class="btn btn-success mr-2" @click="routeTo(0)">Add New Menu Item</button>
-            <button class="btn btn-info mr-2">Refresh</button>
-            <button class="btn btn-warning mr-2" @click="routeTo(1)">Edit an Item</button> 
+            <button type="button" class="btn btn-success mr-2" @click="routeTo(0)">Add New Menu Item</button>
+            <button type="button" class="btn btn-info mr-2">Refresh</button>
+            <button type="button" class="btn btn-warning mr-2" @click="routeTo(1)">Edit an Item</button> 
         </div>
             <button class="btn btn-danger" @click="routeTo(2)">Go Back</button>
     </div>
