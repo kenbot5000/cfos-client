@@ -40,10 +40,6 @@
 import axios from 'axios';
 import MenuItem from '../../components/MenuItem';
 
-const config = {
-    headers: { 'Accept': 'application/json'}
-};
-
 export default {
     components: {
         MenuItem,
@@ -67,7 +63,7 @@ export default {
     },
     async created() {
         try {
-            const menu = await axios.get("http://localhost:5000/menu", config);
+            const menu = await axios.get("/api/menu", config);
             this.menu = menu.data.res;
         } catch(err) {
             console.log(err);

@@ -56,14 +56,9 @@ export default {
         }
     },
     async created() {
-        // Config
-        const config = {
-            headers: { 'Accept': 'application/json'}
-        };
-
         // Users
         try {
-            const usersRes = await axios.get("http://localhost:5000/user/", config);
+            const usersRes = await axios.get("/api/user/");
             this.users = usersRes.data.res;
         } catch(err) {
             console.log(err);
@@ -72,7 +67,7 @@ export default {
         // Menu
 
         try {
-            const menu = await axios.get("http://localhost:5000/menu", config);
+            const menu = await axios.get("/api/menu");
             this.menu = menu.data.res;
         } catch(err) {
             console.log(err);

@@ -34,14 +34,10 @@ export default {
     },
     methods: {
         async addUser() {
-            const config = {
-                headers: {
-                    'Accept': 'application/json'
-                }
-            };
+            
 
             try {
-                const res = await axios.put("http://localhost:5000/user/", this.newUser, config);
+                const res = await axios.put("http://localhost:5000/user/", this.newUser);
                 this.$router.push("/users");
             } catch(err) {
                 this.errorMessage = err;

@@ -31,15 +31,9 @@ export default {
   },
   methods: {
     async login() {
-        const config = {
-        headers: {
-          'Accept': 'application/json'
-        }
-      };
-
       try {
         let text = this.user.username;
-        const res = await axios.get(`http://localhost:5000/user/${text}`, config);
+        const res = await axios.get(`/api/user/${text}`);
         if(this.user.password == res.data.res.password) {
           // var d = new Date();
           // d.setTime(d.getTime() + (4*60*60*1000));

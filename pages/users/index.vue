@@ -32,12 +32,8 @@ export default {
         }
     },
     async created() {
-        const config = {
-            headers: { 'Accept': 'application/json'}
-        };
-
         try {
-            const res = await axios.get("http://localhost:5000/user/", config);
+            const res = await axios.get("/api/user/");
             this.users = res.data.res;
         } catch(err) {
             console.log(err);
@@ -45,13 +41,9 @@ export default {
     },
     methods: {
         async reloadUser() {
-            const config = {
-                headers: { 'Accept': 'application/json'}
-            };
-
             try {
                 this.users = [];
-                const res = await axios.get("http://localhost:5000/user/", config);
+                const res = await axios.get("/api/user/");
                 this.users = res.data.res;
             } catch(err) {
                 console.log(err);
