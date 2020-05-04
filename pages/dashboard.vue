@@ -67,7 +67,7 @@ export default {
         // Menu
 
         try {
-            const menu = await axios.get("/api/menu");
+            const menu = await axios.get("/api/menu/");
             this.menu = menu.data.res;
         } catch(err) {
             console.log(err);

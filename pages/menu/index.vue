@@ -63,7 +63,7 @@ export default {
     },
     async created() {
         try {
-            const menu = await axios.get("/api/menu", config);
+            const menu = await axios.get("/api/menu");
             this.menu = menu.data.res;
         } catch(err) {
             console.log(err);
@@ -79,7 +79,7 @@ export default {
 
             console.log(itemSearch);
 
-            // const res = axios.put(`http://localhost:5000/`)
+            // const res = axios.put(`/api/`)
 
             this.$refs.activeList.splice(id, 1);
         }

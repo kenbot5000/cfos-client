@@ -35,10 +35,6 @@ export default {
         let text = this.user.username;
         const res = await axios.get(`/api/user/${text}`);
         if(this.user.password == res.data.res.password) {
-          // var d = new Date();
-          // d.setTime(d.getTime() + (4*60*60*1000));
-          // var expires = d.toUTCString();
-          // document.cookie = `id=${res.data.res.id}; expires=${expires};path=/`;
           const cookie = {'id' : res.data.res.id};
           this.$cookies.set('active-user', cookie, {
             path: '/',

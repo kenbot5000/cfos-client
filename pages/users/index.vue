@@ -33,7 +33,7 @@ export default {
     },
     async created() {
         try {
-            const res = await axios.get("/api/user/");
+            const res = await axios.get("/api/user");
             this.users = res.data.res;
         } catch(err) {
             console.log(err);

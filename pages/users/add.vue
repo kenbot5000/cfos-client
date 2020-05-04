@@ -37,7 +37,7 @@ export default {
             
 
             try {
-                const res = await axios.put("http://localhost:5000/user/", this.newUser);
+                const res = await axios.put("/api/user/", this.newUser);
                 this.$router.push("/users");
             } catch(err) {
                 this.errorMessage = err;

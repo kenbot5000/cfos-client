@@ -44,6 +44,7 @@ export default {
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     'cookie-universal-nuxt'
   ],
 
@@ -60,7 +61,7 @@ export default {
   },
 
   proxy: {
-    '/api/':'http://localhost:5000'
+    '/api/': {target: 'http://localhost:5000', pathRewrite: {'^/api/': ''}}
   },
   /*
   ** Build configuration

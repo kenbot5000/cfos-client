@@ -22,7 +22,7 @@ export default {
   methods: {
     deleteUser() {
       try {
-        const res = axios.delete(`http://localhost:5000/user/${this.dataUserId}`);
+        const res = axios.delete(`/api/user/${this.dataUserId}`);
         this.$emit("delete-user", this.dataUserId);
       } catch(err) {
         console.log(err);
