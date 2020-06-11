@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid kiosk">
-      <div class="container p-0">
+  <div class="container-fluid kiosk pb-4">
+      <div class="container p-0 pb-2">
         <nav class="navbar-expand-lg navbar-fixed pl-5">
             <ul class="navbar-nav mr-auto">
                 <h1 class="h1 text-light">Today's Menu</h1>
@@ -19,7 +19,7 @@ export default {
 
 <style>
 .kiosk {
-    height: 100vh;
+    min-height: 100vh;
     background-color: #fccab5;
 }
 
